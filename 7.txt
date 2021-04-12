@@ -1,0 +1,11 @@
+# количество студентов с родителями
+SELECT COUNT(*) FROM students JOIN parents ON parents.id = students.parent_id 
+
+# количество студентов с именем родителя Марина
+SELECT COUNT(*) FROM students JOIN parents ON parents.id = students.parent_id WHERE parents.name = "Марина"
+
+# количество студентов без родителей, сделал пару вариантов
+SELECT COUNT(*) FROM students WHERE parent_id IS "NULL"
+SELECT COUNT(*) FROM students LEFT JOIN parents ON students.parent_id = parents.id WHERE parents.id IS NULL
+# второй вариант считает студентов без родителей,
+# если parent_id is null и если parent_id есть, но отсутствует в таблице parents
